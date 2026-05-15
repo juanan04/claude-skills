@@ -36,13 +36,13 @@ Pregunta al usuario qué campos quiere mostrar usando AskUserQuestion con `multi
 ### Paso 3 — Preguntar estilo de barras
 
 Para campos de porcentaje (ctx, 5h, 7d), pregunta:
-- **Con barras** — `ctx ████░░░░ 26%`
+- **Con barras** — `ctx ▬▬▬▬──── 26%`
 - **Solo número** — `ctx 26%`
 
 Si elige barras, pregunta el ancho:
-- **Compacto** (6) — `██░░░░`
-- **Estándar** (8) — `████░░░░` *(recomendado)*
-- **Amplio** (10) — `██████░░░░`
+- **Compacto** (6) — `▬▬──────`
+- **Estándar** (8) — `▬▬▬▬────` *(recomendado)*
+- **Amplio** (10) — `▬▬▬▬▬▬────`
 
 ### Paso 4 — Generar statusline.py
 
@@ -65,12 +65,13 @@ SEP  = f' {RST}│{W} '
 
 def bar(pct, width=8):
     filled = round(pct / 100 * width)
-    return '█' * filled + '░' * (width - filled)
+    return '▬' * filled + '─' * (width - filled)
 
 def fmt_pct(pct):
-    if pct >= 90: return f'{CRIT}{pct}%{RST}{W}'
-    if pct >= 75: return f'{WARN}{pct}%{RST}{W}'
-    return f'{pct}%'
+    p = round(pct)
+    if p >= 90: return f'{CRIT}{p}%{RST}{W}'
+    if p >= 75: return f'{WARN}{p}%{RST}{W}'
+    return f'{p}%'
 ```
 
 Añade solo los bloques de campos que el usuario eligió. Termina siempre con:
