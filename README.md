@@ -10,21 +10,26 @@ Skills personales para Claude Code. Procedimientos repetibles que Claude ejecuta
 | [`prepara-tarea`](./prepara-tarea/SKILL.md) | Checklist pre-tarea: scope, criterios de éxito, delegación y verificación E2E. Incluye modo investigación con citas obligatorias. |
 | [`revisar-cryptotrader`](./revisar-cryptotrader/SKILL.md) | Revisión semanal del proyecto CryptoTrader: estado de runs, alertas disparadas, diagnóstico y fix de fallos. |
 | [`setup-deepseek`](./setup-deepseek/SKILL.md) | Guía paso a paso para configurar Claude Code con DeepSeek (~5x más barato). Pensada para usuarios no técnicos. |
+| [`setup-second-brain`](./setup-second-brain/SKILL.md) | Instalador completo del Second Brain en una máquina nueva: Obsidian, repos, Claude config, sync automático y DeepSeek. |
 | [`statusline-setup`](./statusline-setup/SKILL.md) | Configura interactivamente el status line de Claude Code: campos, barras de progreso y ancho. Incluye `statusline.py` listo para usar. |
 | [`verificar`](./verificar/SKILL.md) | Verificación obligatoria al cerrar cualquier tarea: ejecuta el comando real, muestra output y confirma resultado correcto. |
 
-## Cómo usarlo en otra máquina
+## Setup en máquina nueva
 
-```bash
-git clone https://github.com/lurio84/claude-skills.git ~/.claude/skills
-```
+Ejecuta este bloque en PowerShell **una sola vez** en la máquina nueva (solo necesitas tener Claude Code instalado):
 
-En Windows:
 ```powershell
-git clone https://github.com/lurio84/claude-skills.git $env:USERPROFILE\.claude\skills
+git clone https://github.com/juanan04/claude-skills.git "$env:USERPROFILE\.claude\skills-custom"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\skills"
+Copy-Item -Recurse -Force "$env:USERPROFILE\.claude\skills-custom\setup-second-brain" "$env:USERPROFILE\.claude\skills\setup-second-brain"
 ```
 
-Reinicia Claude Code y las skills aparecerán como slash commands.
+Luego abre Claude Code y ejecuta:
+```
+/setup-second-brain
+```
+
+La skill se encarga del resto: instala Obsidian, clona todos los repos, configura `~/.claude/`, crea el acceso directo y activa la sincronización automática.
 
 ## Cómo añadir una skill nueva
 
@@ -51,4 +56,4 @@ Reinicia Claude Code y las skills aparecerán como slash commands.
 
 ## Relacionado
 
-- [Vault Obsidian](https://github.com/lurio84/SecondBrain) (privado) — el "por qué" de muchas de estas skills.
+- [Vault Obsidian](https://github.com/juanan04/second-brain) (privado) — el "por qué" de muchas de estas skills.
