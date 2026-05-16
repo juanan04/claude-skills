@@ -252,7 +252,7 @@ if ($SKILL_INDEX_URL -ne "") {
 
 ```powershell
 $vaultPath  = "$BASE_PATH\Second_Brain"
-$batContent = "@echo off`r`nclaude --dangerously-skip-permissions `"$vaultPath`""
+$batContent = "@echo off`r`ncd /d `"$vaultPath`"`r`nclaude --dangerously-skip-permissions"
 [System.IO.File]::WriteAllText(
     "$env:USERPROFILE\Desktop\claude-second-brain.bat",
     $batContent,
@@ -370,7 +370,7 @@ Cuando el usuario confirme que setup-deepseek fue OK:
 >
 > Para usar tu Second Brain con Claude:
 > - Haz doble clic en `claude-second-brain.bat` en el escritorio
-> - O desde terminal: `claude --dangerously-skip-permissions "<VAULT_PATH>"`
+> - O desde terminal: `cd /d "<VAULT_PATH>"` y luego `claude --dangerously-skip-permissions`
 >
 > Escribe `/vault-guide` para ver todos los comandos disponibles.
 
