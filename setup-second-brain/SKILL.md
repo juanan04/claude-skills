@@ -1,6 +1,6 @@
 ---
 name: setup-second-brain
-description: "Configura un Second Brain completo en una máquina nueva de Windows: instala Obsidian, clona los repos del usuario (Second Brain, Skill-Index), configura ~/.claude/ con settings, statusline y comandos, crea el acceso directo de escritorio, activa la sincronización automática cada 30 minutos, y finaliza con el setup de DeepSeek. Úsalo cuando el usuario diga 'configurar nueva máquina', 'instalar second brain', 'setup second brain' o similar."
+description: "Configura un Second Brain completo en una máquina nueva de Windows: instala Obsidian, clona los repos del usuario (Second Brain, Skill-Index), configura ~/.claude/ con settings, statusline y comandos, crea el acceso directo de escritorio, activa la sincronización automática cada 30 minutos, ofrece configurar la barra de estado de la terminal, y finaliza con el setup de DeepSeek. Úsalo cuando el usuario diga 'configurar nueva máquina', 'instalar second brain', 'setup second brain' o similar."
 ---
 
 # Setup Second Brain — Máquina nueva
@@ -317,7 +317,31 @@ Si algo devuelve `False` o un conteo inesperado, repasa el paso correspondiente.
 
 ---
 
-### Paso 14 — Configurar DeepSeek
+### Paso 14 — Barra de estado de la terminal (opcional)
+
+Pregunta:
+
+> ¿Quieres configurar la barra de estado de la terminal? Muestra el modelo activo, coste de la sesión, % de contexto usado, rate limits y más — como esto:
+>
+> `Sonnet 4.6 │ ctx ▬▬──────  26% │ $0.041 │ 5h ▬▬▬▬────  52% │ effort:medium`
+>
+> Escribe "sí" para configurarla ahora, o "no" para saltarlo.
+
+Si el usuario dice **sí**:
+
+> Perfecto. Escribe:
+>
+> `/statusline-setup`
+>
+> Ese skill te guiará para elegir qué campos mostrar y generará el script automáticamente. Vuelve aquí cuando termines.
+
+Espera a que el usuario confirme que ha terminado con `/statusline-setup` antes de pasar al siguiente paso.
+
+Si el usuario dice **no**, continúa directamente al Paso 15.
+
+---
+
+### Paso 15 — Configurar DeepSeek
 
 > ¡Perfecto! El Second Brain está completamente configurado en esta máquina.
 >
@@ -331,7 +355,7 @@ No hagas nada más — el control pasa a `/setup-deepseek`.
 
 ---
 
-### Paso 15 — Resumen final (tras setup-deepseek)
+### Paso 16 — Resumen final (tras setup-deepseek)
 
 Cuando el usuario confirme que setup-deepseek fue OK:
 
@@ -339,6 +363,7 @@ Cuando el usuario confirme que setup-deepseek fue OK:
 >
 > - **Obsidian** instalado — abre la carpeta `<VAULT_PATH>` como vault
 > - **Claude Code** con settings personalizados, statusline y comandos
+> - **Barra de estado** configurada (si se eligió)
 > - **Sincronización** automática cada 30 min (tarea: `SecondBrain-AutoSync`)
 > - **Acceso directo** `claude-second-brain.bat` en el escritorio
 > - **DeepSeek** configurado como alternativa económica
